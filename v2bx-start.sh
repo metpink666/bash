@@ -9,13 +9,14 @@ cat << 'EOF' > "$VB_CMD"
 
 while true; do
     clear
+    echo "————————————————————————————————————————————"
     echo "       泠 の V2bX - lxc - debian 专用       "
     echo "————————————————————————————————————————————"
     echo "             [1]:  检测运行状态             "
     echo "             [2]:  启动                     "
     echo "             [9]:  退出                     "
     echo "————————————————————————————————————————————"
-    echo -n "请选择:     "
+    echo -n "     请选择: "
     read choice
     
     if [ "$choice" = "1" ]; then

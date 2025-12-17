@@ -16,7 +16,7 @@ while true; do
     echo "             [2]:  启动                     "
     echo "             [9]:  退出                     "
     echo "————————————————————————————————————————————"
-    echo -n "      请选择: "
+    echo -n "       请选择:"
     read choice
     
     if [ "$choice" = "1" ]; then

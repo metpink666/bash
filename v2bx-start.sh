@@ -1,13 +1,17 @@
 #!/bin/bash
-# V2bX 启动脚本 - 128MB LXC 小鸡专用
 
-# 1. 杀掉旧进程
-pkill -f "V2bX server"
+V2BX_DIR="/usr/local/V2bX"
+VB_CMD="/usr/local/bin/vb"
 
-# 2. 进入 V2bX 目录
+# 生成/覆盖本地快捷命令 vb
+cat << 'EOF' > "$VB_CMD"
+#!/bin/bash
+# 简化启动 V2bX（带杀掉旧进程）
+pkill -f "V2bX server" 2>/dev/null
 cd /usr/local/V2bX || exit
-
-# 3. 启动 V2bX（后台运行，关闭 watcher，无日志）
 nohup ./V2bX server -w=false >/dev/null 2>&1 &
-
 echo "V2bX started at $(date)"
+EOF
+
+chmod +x "$VB_CMD"
+echo "本地命令 'vb' 已生成/更新，以后可直接输入 vb 启动 V2bX"

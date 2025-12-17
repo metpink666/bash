@@ -8,6 +8,7 @@ cat << 'EOF' > "$VB_CMD"
 #!/bin/bash
 
 while true; do
+    clear
     echo "=== V2bX ==="
     echo "1. 检测运行状态"
     echo "2. 启动"
@@ -16,23 +17,27 @@ while true; do
     read choice
     
     if [ "$choice" = "1" ]; then
+        clear
         echo "状态:"
         ps aux | grep V2bX
         echo ""
-        echo "按回车键继续..."
+        echo "按回车键返回菜单..."
         read
     elif [ "$choice" = "2" ]; then
+        clear
         pkill -f "V2bX server" 2>/dev/null
         cd /usr/local/V2bX || exit
         nohup ./V2bX server -w=false >/dev/null 2>&1 &
         echo "V2bX started at $(date)"
         echo ""
-        echo "按回车键继续..."
+        echo "按回车键返回菜单..."
         read
     elif [ "$choice" = "99" ]; then
+        clear
         exit 0
     else
         echo "请重新选择："
+        sleep 1
     fi
 done
 EOF

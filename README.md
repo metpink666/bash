@@ -3,7 +3,7 @@
 
 ## 1. 一键安装
 ```bash
-cd / && wget -N https://raw.githubusercontent.com/metpink666/bash/refs/heads/main/install.sh && bash install.sh
+cd / && wget -N https://raw.githubusercontent.com/metpink666/bash/refs/heads/main/init.sh && bash init.sh
 ```
 
 ## 2. V2bX - lxc - debian 小鸡运行命令

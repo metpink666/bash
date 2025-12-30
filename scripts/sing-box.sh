@@ -351,12 +351,30 @@ stop_service() {
     
     if pgrep -f "$INSTALL_DIR/$SERVICE_NAME" > /dev/null; then
         echo "正在停止 sing-box..."
-        pkill -f "$INSTALL_DIR/$SERVICE_NAME"
-        sleep 2
         
+        # 先正常停止
+        pkill -f "$INSTALL_DIR/$SERVICE_NAME"
+        sleep 3
+        
+        # 如果还在运行，强制杀死
         if pgrep -f "$INSTALL_DIR/$SERVICE_NAME" > /dev/null; then
-            echo -e "${RED}停止失败，尝试强制停止...${NC}"
+            echo -e "${YELLOW}正常停止失败，尝试强制停止...${NC}"
             pkill -9 -f "$INSTALL_DIR/$SERVICE_NAME"
+            sleep 2
+        fi
+        
+        # 额外检查并杀死占用端口的进程
+        if [ -f "$CONFIG_FILE" ]; then
+            # 从配置文件中提取端口
+            CONFIG_PORT=$(grep '"listen_port"' "$CONFIG_FILE" | grep -o '[0-9]*' | head -1)
+            if [ -n "$CONFIG_PORT" ]; then
+                echo "检查端口 $CONFIG_PORT 是否被释放..."
+                if lsof -i ":$CONFIG_PORT" > /dev/null 2>&1; then
+                    echo -e "${YELLOW}端口 $CONFIG_PORT 仍被占用，强制释放...${NC}"
+                    fuser -k "$CONFIG_PORT"/tcp 2>/dev/null || sudo fuser -k "$CONFIG_PORT"/tcp 2>/dev/null
+                    sleep 1
+                fi
+            fi
         fi
         
         echo -e "${GREEN}✅ sing-box 已停止${NC}"

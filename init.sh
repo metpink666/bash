@@ -37,8 +37,9 @@ while true; do
         97)
             clear
             cd /
-            exec bash <(curl -s https://raw.githubusercontent.com/metpink666/bash/main/init.sh)
+            bash <(curl -s https://raw.githubusercontent.com/metpink666/bash/main/init.sh)
             echo "更新脚本成功，请输入 mp 启动 '泠 の 专用一键脚本'"
+            exit 0
             ;;
         98)
             clear

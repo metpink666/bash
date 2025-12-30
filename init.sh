@@ -59,7 +59,5 @@ done
 EOF
 
 chmod +x "$MP_CMD"
-rm -f ./init.sh 2>/dev/null
 clear
-echo "安装脚本已清理干净，所有文件都在/opt/metpink/文件夹里"
-echo "本地命令 'mp' 已生成/更新，以后可直接输入 mp 启动 '泠 の 专用一键脚本'"
+echo "输入 mp 启动 '泠 の 专用一键脚本'"

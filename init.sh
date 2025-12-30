@@ -17,7 +17,7 @@ while true; do
     echo "║              泠 の 专用一键脚本          ║"
     echo "╚══════════════════════════════════════════╝"
     echo "║             [ 1]:  脚本1                 ║   "
-    echo "║             [ 2]:  脚本2                 ║    "
+    echo "║             [ 2]:  sing-box              ║    "
     echo "╔══════════════════════════════════════════╗"
     echo "║             [97]:  更新脚本              ║       "
     echo "║             [98]:  卸载脚本              ║       "
@@ -33,7 +33,7 @@ while true; do
             ;;
         2)
             clear
-            bash /opt/metpink/scripts/v2bx.sh
+            bash /opt/metpink/scripts/sing-box.sh
             ;;
         97)
             clear

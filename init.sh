@@ -16,23 +16,39 @@ while true; do
     echo "————————————————————————————————————————————"
     echo "             泠 の 专用一键脚本             "
     echo "————————————————————————————————————————————"
-    echo "             [1]:  脚本1             "
-    echo "             [2]:  脚本2                     "
-    echo "             [9]:  退出                     "
+    echo "             [01]:  脚本1                    "
+    echo "             [02]:  脚本2                     "
+    echo "             [97]:  更新脚本                     "
+    echo "             [98]:  卸载脚本                     "
+    echo "             [99]:  退出脚本                     "
     echo "————————————————————————————————————————————"
     echo -n "       请选择:"
     read choice
     
     case "$choice" in
-        1)
+        01)
             clear
             bash /opt/metpink/scripts/v2bx.sh
             ;;
-        2)
+        02)
             clear
             bash /opt/metpink/scripts/v2bx.sh
             ;;
-        9)
+        97)
+            clear
+            cd /
+            exec bash <(curl -s https://raw.githubusercontent.com/metpink666/bash/main/init.sh)
+            echo "更新脚本成功，请输入 mp 启动 '泠 の 专用一键脚本'"
+            ;;
+        98)
+            clear
+            sudo rm -rf /opt/metpink /usr/local/bin/mp
+            echo "/opt/metpink为所有数据目录，已清除"
+            echo "/usr/local/bin/mp为mp快捷命令文件，已清除"
+            echo "该脚本已完整清理干净"
+            exit 0
+            ;;
+        99)
             clear
             exit 0
             ;;

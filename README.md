@@ -3,7 +3,7 @@
 
 ## 0. 一键安装
 ```bash
-cd / && wget -N https://raw.githubusercontent.com/metpink666/bash/refs/heads/main/init.sh && bash init.sh
+bash <(curl -s https://raw.githubusercontent.com/metpink666/bash/main/init.sh)
 ```
 
 ## 1. 脚本 01 （V2bX - lxc - debian 小鸡运行）

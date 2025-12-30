@@ -28,22 +28,22 @@ while true; do
     
     case "$choice" in
         1)
-            clear
+            # clear
             bash /opt/metpink/scripts/v2bx.sh
             ;;
         2)
-            clear
+            # clear
             bash /opt/metpink/scripts/sing-box.sh
             ;;
         97)
-            clear
+            # clear
             cd /
             bash <(curl -s https://raw.githubusercontent.com/metpink666/bash/main/init.sh)
             echo "更新脚本成功，请输入 mp 启动 '泠 の 专用一键脚本'"
             exit 0
             ;;
         98)
-            clear
+            # clear
             sudo rm -rf /opt/metpink /usr/local/bin/mp
             echo "/opt/metpink为所有数据目录，已清除"
             echo "/usr/local/bin/mp为mp快捷命令文件，已清除"
@@ -51,7 +51,7 @@ while true; do
             exit 0
             ;;
         "")
-            clear
+            # clear
             exit 0
             ;;
     esac
@@ -59,5 +59,5 @@ done
 EOF
 
 chmod +x "$MP_CMD"
-clear
+# clear
 echo "输入 mp 启动 '泠 の 专用一键脚本'"

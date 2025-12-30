@@ -16,8 +16,8 @@ while true; do
     echo "————————————————————————————————————————————"
     echo "             泠 の 专用一键脚本             "
     echo "————————————————————————————————————————————"
-    echo "             [01]:  脚本1                    "
-    echo "             [02]:  脚本2                     "
+    echo "             [ 1]:  脚本1                    "
+    echo "             [ 2]:  脚本2                     "
     echo "             [97]:  更新脚本                     "
     echo "             [98]:  卸载脚本                     "
     echo "             [99]:  退出脚本                     "
@@ -26,11 +26,11 @@ while true; do
     read choice
     
     case "$choice" in
-        01)
+        1)
             clear
             bash /opt/metpink/scripts/v2bx.sh
             ;;
-        02)
+        2)
             clear
             bash /opt/metpink/scripts/v2bx.sh
             ;;
@@ -49,7 +49,7 @@ while true; do
             echo "该脚本已完整清理干净"
             exit 0
             ;;
-        99)
+        "")
             clear
             exit 0
             ;;

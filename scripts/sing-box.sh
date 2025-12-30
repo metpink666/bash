@@ -137,7 +137,7 @@ install_singbox() {
     read
 }
 
-# 配置SK5代理
+# 配置SK5代理（简化版）
 configure_sk5() {
     clear
     echo "╔══════════════════════════════════════════════╗"
@@ -180,16 +180,15 @@ configure_sk5() {
     read -s PASSWORD
     echo ""
     
-    # 生成配置
+    # 生成最简单的配置
     echo "生成配置文件..."
     
     if [ -z "$USERNAME" ] && [ -z "$PASSWORD" ]; then
-        # 无认证配置
+        # 无认证配置（最简单格式）
         cat > "$CONFIG_FILE" << EOF
 {
     "log": {
-        "level": "info",
-        "timestamp": true
+        "level": "info"
     },
     "inbounds": [
         {
@@ -197,39 +196,23 @@ configure_sk5() {
             "tag": "socks-in",
             "listen": "::",
             "listen_port": $PORT,
-            "sniff": true,
-            "sniff_override_destination": true,
             "users": []
         }
     ],
     "outbounds": [
         {
-            "type": "direct",
-            "tag": "direct"
+            "type": "direct"
         }
-    ],
-    "route": {
-        "rules": [
-            {
-                "geoip": [
-                    "cn",
-                    "private"
-                ],
-                "outbound": "direct"
-            }
-        ],
-        "auto_detect_interface": true
-    }
+    ]
 }
 EOF
         AUTH_INFO="无认证"
     else
-        # 有认证配置
+        # 有认证配置（最简单格式）
         cat > "$CONFIG_FILE" << EOF
 {
     "log": {
-        "level": "info",
-        "timestamp": true
+        "level": "info"
     },
     "inbounds": [
         {
@@ -237,8 +220,6 @@ EOF
             "tag": "socks-in",
             "listen": "::",
             "listen_port": $PORT,
-            "sniff": true,
-            "sniff_override_destination": true,
             "users": [
                 {
                     "username": "$USERNAME",
@@ -249,22 +230,9 @@ EOF
     ],
     "outbounds": [
         {
-            "type": "direct",
-            "tag": "direct"
+            "type": "direct"
         }
-    ],
-    "route": {
-        "rules": [
-            {
-                "geoip": [
-                    "cn",
-                    "private"
-                ],
-                "outbound": "direct"
-            }
-        ],
-        "auto_detect_interface": true
-    }
+    ]
 }
 EOF
         AUTH_INFO="用户名: $USERNAME"

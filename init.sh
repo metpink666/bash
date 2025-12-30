@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # 删除并重新安装
-sudo rm -rf /opt/metpink
+sudo rm -rf /opt/metpink 2>/dev/null
 sudo git clone https://github.com/metpink666/bash.git /opt/metpink
-bash /opt/metpink/init.sh
+sudo chmod -R 755 /opt/metpink
 
 MP_CMD="/usr/local/bin/mp"
 
